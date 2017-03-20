@@ -1,13 +1,64 @@
 module.exports = {
-  root: true,
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module'
-  },
-  extends: 'eslint:recommended',
-  env: {
-    browser: true
-  },
-  rules: {
-  }
+	root: true,
+	parserOptions: {
+		ecmaVersion: 6,
+		sourceType: 'module'
+	},
+	extends: 'eslint:recommended',
+	env: {
+		'browser': true
+	},
+	globals: {
+		'document': false,
+		'window': false,
+		'location': false,
+		'setTimeout': false,
+		'Ember': false,
+		'Em': false,
+		'DS': false,
+		'$': false,
+		'Faye': false,
+		'Caliper': false,
+		'TweenMax': false,
+		'TweenMin': false,
+		'TimelineLite': false,
+		'TimelineMax': false,
+		'httpRespond': false,
+		'Image': false,
+		'_': false,
+		'zE': false,
+		'Modernizr': false,
+		'svgPanZoom': false,
+		'FastClick': false,
+		'ga': false,
+		'UAParser': false,
+		'-Promise': false,
+		'Gynzy': false,
+		'CustomEvent': false,
+		'__insp': false,
+		'BigNumber': false,
+		'FileReader': false,
+		'Blob': false,
+		'Bloodhound': false,
+		's': false,
+		'Proton': false,
+		'requestAnimationFrame': false,
+		'localforage': false,
+		'moment': false,
+		'io': false,
+		'html2canvas': false,
+		'atob': false,
+		'requirejs': false,
+		'MockServer': false,
+		'MockSocketIO': false,
+		'Ember.getOwner': false,
+		'require': false,
+		'module': false,
+		'process': false,
+		'Map': false
+	},
+	rules: {
+		'no-console': 'warn',
+		'eol-last': 'warn'
+	}
 };

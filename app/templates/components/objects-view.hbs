@@ -1,0 +1,16 @@
+<div class='objects-canvas'>
+  {{#each objects as |object|}}
+    {{component object.component object=object}}
+  {{/each}}
+</div>
+
+<div class='objects-editor'>
+  <button {{action "addObject" "square-view"}}>Add Square</button>
+  <button {{action "addObject" "circle-view"}}>Add Circle</button><br>
+{{#each objects as |object|}}
+  {{object-edit-form object=object removeObject=(action "removeObject")}}
+{{/each}}
+</div>
+
+
+

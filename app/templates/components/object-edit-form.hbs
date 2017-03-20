@@ -1,0 +1,7 @@
+<p class='small'>uuid: {{ object.uuid }}</p>
+<p><label><span>background</span> {{input value=(mut object.styles.backgroundColor) type='color'}}</label></p>
+<p><label><span>width</span> {{input value=(mut object.styles.width) type='number' step=25}}</label></p>
+<p><label><span>height</span> {{input value=(mut object.styles.height) type='number' step=25}}</label></p>
+<p><label><span>left</span> {{input value=(mut object.styles.left) type='number' step=25}}</label></p>
+<p><label><span>top</span> {{input value=(mut object.styles.top) type='number' step=25}}</label></p>
+<p><button {{action "removeObject" object.uuid}}>Remove</button></p>

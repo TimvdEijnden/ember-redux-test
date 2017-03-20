@@ -1,0 +1,10 @@
+{
+	"indent_size": 1,
+	"indent_level": 0,
+	"indent_with_tabs": true,
+	"preserve_newlines": true,
+	"max_preserve_newlines": 2,
+	"indent_handlebars": true,
+	"end_with_newline": true,
+	"space_after_anon_function": false
+}
