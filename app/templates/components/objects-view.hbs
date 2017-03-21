@@ -1,3 +1,6 @@
+{{!--
+This is a Presentational Component that shows the data from the Container Component
+--}}
 <div class='objects-canvas'>
   {{#each objects as |object|}}
     {{component object.component object=object}}
@@ -5,10 +8,10 @@
 </div>
 
 <div class='objects-editor'>
-  <button {{action "addObject" "square-view"}}>Add Square</button>
-  <button {{action "addObject" "circle-view"}}>Add Circle</button><br>
+  <button {{action addObject "square-view"}}>Add Square</button>
+  <button {{action addObject "circle-view"}}>Add Circle</button><br>
 {{#each objects as |object|}}
-  {{object-edit-form object=object removeObject="removeObject" updateObject="updateObject"}}
+  {{object-edit-form changeset=(changeset object.styles) uuid=object.uuid removeObject=removeObject updateObject=updateObject}}
 {{/each}}
 </div>
 

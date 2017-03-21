@@ -1,4 +1,10 @@
 {{outlet}}
 
-{{objects-view}}
+{{!--
+The Container Component and the Presentational Component are connected here.
+--}}
+{{#objects-list as |objects addObject removeObject updateObject|}}
+	{{objects-view objects=objects addObject=addObject removeObject=removeObject updateObject=updateObject}}
+{{/objects-list}}
+
 

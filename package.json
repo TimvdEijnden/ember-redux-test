@@ -17,6 +17,7 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.4.1",
+    "ember-changeset": "^1.2.3",
     "ember-cli": "2.12.0",
     "ember-cli-app-version": "^2.0.0",
     "ember-cli-babel": "^5.1.7",
@@ -34,7 +35,7 @@
     "ember-load-initializers": "^0.6.0",
     "ember-lodash-shim": "^2.0.0",
     "ember-redux": "^2.2.0",
- 	"ember-redux-shim": "git://github.com/rwwagner90/ember-redux-shim.git#master",
+    "ember-redux-shim": "git://github.com/rwwagner90/ember-redux-shim.git#master",
     "ember-redux-thunk-shim": "git://github.com/rwwagner90/ember-redux-thunk-shim.git#master",
     "ember-resolver": "^2.0.3",
     "ember-source": "~2.12.0",

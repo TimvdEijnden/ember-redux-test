@@ -6,6 +6,8 @@ import {
 	randomColor
 } from 'redux-test/utils/color-util';
 
+import _ from 'lodash';
+
 export const ActionTypes = {
 	ADD_OBJECT: 'ADD_OBJECT',
 	UPDATE_OBJECT: 'UPDATE_OBJECT',
@@ -39,29 +41,37 @@ const initialState = [{
 export default ((state, action) => {
 	switch (action.type) {
 		case ActionTypes.ADD_OBJECT:
-			state = state.concat();
-			state.push({
-				uuid: v4(),
-				component: action.componentType,
-				styles: {
-					backgroundColor: randomColor(110),
-					width: 100,
-					height: 100,
-					left: Math.round((Math.random() * 500) + 10),
-					top: Math.round((Math.random() * 400) + 10),
+			return [
+				...state,
+				{
+					uuid: v4(),
+					component: action.componentType,
+					styles: {
+						backgroundColor: randomColor(110),
+						width: 100,
+						height: 100,
+						left: Math.round((Math.random() * 500) + 10),
+						top: Math.round((Math.random() * 400) + 10),
+					}
 				}
-			})
-			return state;
+			];
 		case ActionTypes.UPDATE_OBJECT:
-			state = state.concat();
-			let objectIndex = state.findIndex((object) => object.uuid === action.uuid);
-			let object = Object.assign({}, state[objectIndex]);
-			object.styles = Object.assign({}, action.styles);
-			state[objectIndex] = object;
+			// clone the array and objects
+			state = _.cloneDeep(state);
+			// get the object
+			let object = state.find(object => object.uuid === action.uuid);
+			// clone the object
+			object.styles = Object.assign(object.styles, action.change);
+			// return the state
 			return state;
 		case ActionTypes.REMOVE_OBJECT:
-			return state.filter((object) => object.uuid !== action.uuid);
+			return state.filter(object => object.uuid !== action.uuid);
 		default:
 			return state || initialState;
 	}
 });
+
+export function getObjectByUuid(state, uuid) {
+	const found = state.objects.find(object => object.uuid === uuid);
+	return found;
+}
