@@ -1,41 +1,21 @@
 import Ember from 'ember';
-import { v4 } from 'ember-uuid';
-const {
-  A
-} = Ember;
+import connect from 'ember-redux/components/connect';
+import { ActionTypes } from 'redux-test/reducers/objects';
 
-export default Ember.Component.extend({
-  objects: A(),
+var stateToComputed = (state) => {
+  return {
+    objects: state.objects
+  };
+};
 
-  actions: {
-    addObject(componentType) {
-      this.get('objects').pushObject({
-		uuid: v4(),
-        component: componentType,
-        styles: {
-          backgroundColor: this.randomColor(100),
-          width: 100,
-          height: 100,
-          left: Math.round((Math.random() * 500) + 10),
-          top: Math.round((Math.random() * 400) + 10),
-        }
-      })
-    },
+var dispatchToActions = (dispatch) => {
+  return {
+    addObject: (componentType) => dispatch({type: ActionTypes.ADD_OBJECT, componentType}),
+    removeObject: (uuid) => dispatch({type: ActionTypes.REMOVE_OBJECT, uuid}),
+    updateObject: (uuid, styles) => dispatch({type: ActionTypes.UPDATE_OBJECT, uuid, styles})
+  };
+};
 
-	removeObject(uuidToRemove) {
-		const filteredObjects = this.get('objects').filter((object) => { return object.uuid !== uuidToRemove });
-		this.set('objects', filteredObjects);
-	}
-  },
+var ObjectsViewComponent = Ember.Component.extend({});
 
-
-  randomColor(brightness){
-    function randomChannel(brightness){
-      var r = 255-brightness;
-      var n = 0|((Math.random() * r) + brightness);
-      var s = n.toString(16);
-      return (s.length==1) ? '0'+s : s;
-    }
-    return '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
-  }
-});
+export default connect(stateToComputed, dispatchToActions)(ObjectsViewComponent);

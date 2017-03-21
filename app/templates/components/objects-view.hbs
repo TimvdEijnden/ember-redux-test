@@ -8,7 +8,7 @@
   <button {{action "addObject" "square-view"}}>Add Square</button>
   <button {{action "addObject" "circle-view"}}>Add Circle</button><br>
 {{#each objects as |object|}}
-  {{object-edit-form object=object removeObject=(action "removeObject")}}
+  {{object-edit-form object=object removeObject="removeObject" updateObject="updateObject"}}
 {{/each}}
 </div>
 
