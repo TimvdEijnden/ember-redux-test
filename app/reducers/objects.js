@@ -60,7 +60,7 @@ export default ((state, action) => {
 			state = _.cloneDeep(state);
 			// get the object
 			let object = state.find(object => object.uuid === action.uuid);
-			// clone the object
+			// replace the styles object
 			object.styles = Object.assign(object.styles, action.change);
 			// return the state
 			return state;
